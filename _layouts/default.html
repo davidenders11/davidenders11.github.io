@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{site.title}}</title>
+    <meta name="description" content="{{ site.name }} {{ site.description }}" />
+    <meta name="keywords" content="{{ site.keywords }}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap Resources -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Custom Theming -->
+    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Custom Fonts -->
+    <link
+      href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="navbar-header page-scroll">
+          <a class="navbar-brand" href="./">{{site.title}}</a>
+          <a href="{{site.social.github}}" class="btn-social btn-outline"
+            ><i class="fa fa-fw fa-github"></i
+          ></a>
+          <a href="{{site.social.linkedin}}" class="btn-social btn-outline"
+            ><i class="fa fa-fw fa-linkedin"></i
+          ></a>
+          <!-- <a href="{{site.social.medium}}" class="btn-social btn-outline"
+            ><i class="fa fa-fw fa-medium"></i
+          ></a> -->
+        </div>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainnavbar"
+          aria-controls="mainnavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainnavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="./resume.pdf">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./posts.html">Posts</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <div class="container-fluid header-body">
+        <div class="row header-row">
+          <div class="col-lg-12 text-center">
+            <img
+              class="profile-img"
+              src="img/headshot.jpg"
+              alt="David Enders"
+            />
+            <div class="intro-text">
+              <span class="name">David Enders</span>
+              <hr />
+              <span class="skills">{{ site.description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2 class="text-center">About Me</h2>
+            <hr />
+            <p>
+              I am a student, problem-solver, climate-tech enthusiast and
+              athlete. I think creatively and love to build in a variety of
+              disciplines with a wide range of techniques.
+            </p>
+            <p>
+              I am a fourth-year student at Claremont McKenna College with a
+              major in Computer Science at Harvey Mudd College. I have software
+              engineering experience in the automotive space, writing software
+              for hardware, and writing software for the web. I have intimate
+              experience with web service integrations and making use of
+              AI-powered tools and APIs.
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <h2 class="text-center">Interests</h2>
+            <hr />
+            <ul>
+              <li>Deep learning: neural networks, training AI models</li>
+              <li>
+                Building with my hands: woodworking, welding, soldering, laser
+                cutting
+              </li>
+              <li>
+                Music: saxophone, singing (barely), harmonica (kinda), guitar
+                (just chords), piano (now I'm completely lying)
+              </li>
+              <li>
+                Board sports: snowboarding, skating, surfing, kiteboarding,
+                wakeboarding, wake surfing
+              </li>
+              <li>
+                Traveling: preferrably somewhere Spanish, English or German is
+                spoken, but I've been all over!
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
