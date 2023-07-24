@@ -7,7 +7,7 @@
 }
 
 .navbar-brand {
-  font-size: 2em;
+  font-size: 1.25em;
   font-weight: 700;
 }
 
@@ -20,11 +20,12 @@
 }
 
 .fa {
-  font-size: 2em;
+  font-size: 1.25em;
   align-items: center;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
+  border-color: #9b9d9f;
   color: #9b9d9f;
   transition-duration: 0.5s;
 }
