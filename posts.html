@@ -4,7 +4,24 @@ layout: default
 title: Blog
 ---
 
-<h1 class="col-header dark-orange">All posts</h1>
+<header>
+  <div class="container-fluid header-body">
+    <div class="row header-row">
+      <div class="col-lg-12 text-center">
+        <div class="intro-text">
+          <span class="name">My Writing</span>
+          <hr />
+          <span class="skills"
+            >I like to write about the things I learn, both to share knowledge
+            and to help me remember important things! The posts here are
+            centered around my academic and professional career. If you want to
+            read more casual writing, check out my writing on Medium!</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 {% for post in site.posts %}
 <div class="post-preview">
   <img
