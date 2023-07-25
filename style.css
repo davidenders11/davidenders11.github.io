@@ -11,6 +11,13 @@
   font-weight: 700;
 }
 
+.content {
+  min-height: calc(100vh - 70px);
+}
+.footer {
+  height: 50px;
+}
+
 .navbar {
   height: 85px;
   font-size: 1em;

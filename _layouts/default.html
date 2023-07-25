@@ -25,7 +25,8 @@
     />
     <!-- Custom Theming -->
     <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="{{ site.baseurl }}{{ "/style.css" }}" />
     <!-- Custom Fonts -->
     <link
       href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700"
@@ -34,6 +35,8 @@
     />
   </head>
   <body>
-    {{ content }}
+    {% include nav.html %}
+    <div class="content">{{ content }}</div>
+    {%include footer.html %}
   </body>
 </html>
