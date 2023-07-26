@@ -128,3 +128,15 @@ header .intro-text .skills {
   font-size: 2em;
   font-weight: 400;
 }
+
+.post-hero-image {
+  max-width: 350px;
+  justify-self: center;
+  justify-content: center;
+  justify-items: center;
+  padding: 20px 0px;
+}
+
+.post-container {
+  padding: 50px;
+}
