@@ -1,3 +1,5 @@
+/* GENERAL */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,16 +8,29 @@
   color: #22252a;
 }
 
+hr {
+  margin: 15px auto 25px;
+  padding: 0;
+  max-width: 200px;
+  border: 0;
+  border-top: solid 4px;
+  background-color: #22252a;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* NAVBAR */
+
 .navbar-brand {
   font-size: 1.25em;
   font-weight: 700;
-}
-
-.content {
-  min-height: calc(100vh - 70px);
-}
-.footer {
-  height: 50px;
 }
 
 .navbar {
@@ -42,6 +57,17 @@
   transition-duration: 0.5s;
 }
 
+/* FOOTER */
+
+.content {
+  min-height: calc(100vh - 70px);
+}
+.footer {
+  height: 50px;
+}
+
+/* HEADER */
+
 .header-body {
   background-color: #9b9d9f;
   justify-items: center;
@@ -60,7 +86,6 @@
 header .intro-text .name {
   display: block;
   text-transform: uppercase;
-  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2em;
   font-weight: 700;
   color: #22252a;
@@ -72,19 +97,34 @@ header .intro-text .skills {
   color: #22252a;
 }
 
-hr {
-  margin: 15px auto 25px;
-  padding: 0;
-  max-width: 200px;
-  border: 0;
-  border-top: solid 4px;
-  background-color: #22252a;
-}
+/* ABOUT */
 
 #about {
   padding: 2em;
 }
 
-h2 {
-  font-weight: 500;
+/* POSTS */
+
+.post-preview {
+  justify-items: start;
+}
+
+.post-image-preview {
+  max-width: 200px;
+}
+
+.post-skinny-hr {
+  margin: 15px auto 15px;
+  padding: 0;
+  max-width: 90%;
+  border: 0;
+  border-top: solid 1px;
+  background-color: #22252a;
+}
+
+.preview-title {
+  color: #22252a;
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: 400;
 }
