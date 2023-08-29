@@ -8,4 +8,4 @@
 - Get a domain name
 
 # Notes
-- Domain `davidenders.me` registered on [Namecheap](www.namecheap.com)
+- Domain `davidenders.me` registered on [Namecheap](https://www.namecheap.com/)
