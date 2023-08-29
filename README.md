@@ -9,4 +9,3 @@
 
 # Notes
 - Domain `davidenders.me` registered on <a href="https://www.namecheap.com/" target="_blank">Namecheap</a>
-- [Namecheap](https://www.namecheap.com/){:target="_blank"}
