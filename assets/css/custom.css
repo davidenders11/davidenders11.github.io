@@ -59,12 +59,12 @@ a {
 
 /* FOOTER */
 
-.content {
+/* .content {
   min-height: calc(100vh - 70px);
 }
 .footer {
   height: 50px;
-}
+} */
 
 /* HEADER */
 
@@ -107,6 +107,7 @@ header .intro-text .skills {
 
 .post-preview {
   justify-items: start;
+  width: 90%;
 }
 
 .post-image-preview {
@@ -136,7 +137,7 @@ header .intro-text .skills {
   justify-items: center;
   padding: 20px 0px;
 }
-
+/* 
 .post-container {
-  padding: 50px;
-}
+  padding: 100px;
+} */
