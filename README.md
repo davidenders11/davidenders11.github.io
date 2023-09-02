@@ -5,7 +5,6 @@
 # Future Additions:
 - Add feed rss for blog posts
 - Embed project demos
-- Get a domain name
 
 # Notes
 - Domain `davidenders.me` registered on <a href="https://www.namecheap.com/" target="_blank">Namecheap</a>
