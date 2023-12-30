@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "David Enders"
+  search: false
+  navbar:
+    left:
+      - icon: github
+        href: https://github.com/davidenders11
+      - icon: linkedin
+        href: https://linkedin.com/in/david-enders
+      - icon: medium
+        href: https://medium.com/@davidenders
+      - icon: envelope
+        href: mailto:david.georg.enders@gmail.com
+    right:
+      - href: /resume.pdf
+        text: Resume
+      - posts.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
