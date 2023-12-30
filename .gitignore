@@ -1,6 +1,6 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# Overhead
 .DS_Store
+
+/.quarto/
+/blog-sample/
+/_site/
