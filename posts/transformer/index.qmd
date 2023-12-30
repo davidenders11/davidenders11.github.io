@@ -13,7 +13,7 @@ with teams of scientists and researchers competing to create a machine
 that can play chess the best, or draw the best pictures, or write more
 human-like stories.
 
-![](media/media/image1.png)
+![Garry Kasparov in his famous match against the IBM computer Deep Blue ([Source](https://www.livescience.com/59068-deep-blue-beats-kasparov-progress-of-ai.html))](media/image1.png){fig-alt="Garry Kasparov chess match."}
 
 ## The Turing Test: How it Started
 
@@ -78,7 +78,7 @@ in 1943, but Rosenblatt's implementation was the first actual neural
 network that was trained, and laid the foundation for decades of neural
 networks research in decades to come.
 
-![](media/media/image2.jpeg)
+![Frank Rosenblatt's Perceptron ([Source](https://news.cornell.edu/stories/2019/09/professors-perceptron-paved-way-ai-60-years-too-soon))](media/image2.jpeg){fig-alt="The original perceptron from Frank Rosenblatt."}
 
 Of course, between the Perceptron and the transformer there were decades
 of innovation in deep learning, but I wanted to mention these initial
@@ -120,7 +120,8 @@ next output token. Attention can be thought of as a series of matrix
 transformations, designed so that the resulting values have been aligned
 to prioritize tokens that provide more context in the input sequence.
 
-![](media/media/image3.png)
+
+![Transformer architecture ([Source](https://arxiv.org/pdf/1706.03762.pdf))](media/image3.png){fig-alt="Diagram showing the architecure of the transformer model."}
 
 This diagram from the Transformer paper introduces the basic structure
 of the architecture. On the left hand side, we see an encoder block
@@ -145,19 +146,20 @@ output.
 The self-attention mechanism basically calculates how important each
 word should be in the decision-making process of choosing the next one.
 
-![](media/media/image4.png)
+
+![Attention in two different scenarios. From the [Transformer blog post](https://blog.research.google/2017/08/transformer-novel-neural-network.html)](media/image4.png){fig-alt="A figure demonstrating how attention draws connection between tokens."}
 
 This mechanism is implemented by a series of vector operations on the
 vector embeddings for each token. For each of the decoder or encoder's
 input vectors (each of which represents a token), we create three
 additional vectors; a query, key and value vector, by multiplying each
 embedding vector from the input by three weight matrices that were
-trained during the training process. So we take input vector x1,
-multiply it by Wq, Wk and Wv (the weight matrices for queries, keys and
-values) to get q1, k1, and v1 (the query, key and value vector). To
-calculate the attention score of x1 with respect to all other inputs
-x2\...xn we multiply the query vector q1 by the key vectors of the other
-inputs k1\...kn. This score is scaled down proportionally to the
+trained during the training process. So we take input vector `x1`,
+multiply it by `Wq`, `Wk` and `Wv` (the weight matrices for queries, keys and
+values) to get `q1`, `k1`, and `v1` (the query, key and value vector). To
+calculate the attention score of `x1` with respect to all other inputs
+`x2\...xn` we multiply the query vector q1 by the key vectors of the other
+inputs `k1\...kn`. This score is scaled down proportionally to the
 dimension of the key vectors to reduce volatility, passed through the
 softmax function to normalize, and multiplied by the value vectors. If
 the softmax value resulting from the attention score is very low, the
@@ -180,9 +182,10 @@ Alammar's [The Illustrated
 Transformer](http://jalammar.github.io/illustrated-transformer/) (a
 great resource if you'd like more details on the attention process)
 models this operation with 8 attention heads, where the output matrix is
-Z.
+`Z`.
 
-![](media/media/image5.png)
+
+![Attention matrix computation ([Source](http://jalammar.github.io/illustrated-transformer/))](media/image5.png){fig-alt="Figure demonstrates how multi-headed attention is calculated in parallel."}
 
 #### Positional Encoding
 
@@ -194,7 +197,7 @@ the Transformer paper: "the network and the self-attention mechanism is
 permutation invariant." Thus, we add another feature to the initial
 embedding; a positional encoding.
 
-![](media/media/image6.png)
+![Positional encoding formula](media/image6.png){fig-align="left" fig-alt="The formulae for positional encoding."}
 
 The positional encoding is another vector which is added to the input
 embedding, and serves to add additional context to the output from the
