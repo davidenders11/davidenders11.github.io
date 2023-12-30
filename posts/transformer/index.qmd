@@ -154,12 +154,12 @@ vector embeddings for each token. For each of the decoder or encoder's
 input vectors (each of which represents a token), we create three
 additional vectors; a query, key and value vector, by multiplying each
 embedding vector from the input by three weight matrices that were
-trained during the training process. So we take input vector `x1`,
-multiply it by `Wq`, `Wk` and `Wv` (the weight matrices for queries, keys and
-values) to get `q1`, `k1`, and `v1` (the query, key and value vector). To
-calculate the attention score of `x1` with respect to all other inputs
-`x2\...xn` we multiply the query vector q1 by the key vectors of the other
-inputs `k1\...kn`. This score is scaled down proportionally to the
+trained during the training process. So we take input vector $x_1$,
+multiply it by $W_q$, $W_k$ and $W_v$ (the weight matrices for queries, keys and
+values) to get $q_1$, $k_1$, and $v_1$ (the query, key and value vector). To
+calculate the attention score of $x_1$ with respect to all other inputs
+$x_2 \dots x_n$ we multiply the query vector q1 by the key vectors of the other
+inputs $k_1 \dots k_n$. This score is scaled down proportionally to the
 dimension of the key vectors to reduce volatility, passed through the
 softmax function to normalize, and multiplied by the value vectors. If
 the softmax value resulting from the attention score is very low, the
@@ -182,7 +182,7 @@ Alammar's [The Illustrated
 Transformer](http://jalammar.github.io/illustrated-transformer/) (a
 great resource if you'd like more details on the attention process)
 models this operation with 8 attention heads, where the output matrix is
-`Z`.
+$Z$.
 
 
 ![Attention matrix computation ([Source](http://jalammar.github.io/illustrated-transformer/))](media/image5.png){fig-alt="Figure demonstrates how multi-headed attention is calculated in parallel."}

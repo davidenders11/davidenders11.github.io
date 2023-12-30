@@ -47,7 +47,7 @@ imitate human brain activity in the 1940s (more on the history of neural
 networks
 [here](https://cs.stanford.edu/people/eroberts/courses/soco/projects/neural-networks/History/history1.html)).
 
-![](media/neurons.png)
+![Neurons, artificial and biological ([Source](https://www.google.com/url?sa=i&url=https%3A%2F%2Ftowardsdatascience.com%2Fthe-differences-between-artificial-and-biological-neural-networks-a8b46db828b7&psig=AOvVaw0KysOW903doIPGgFhuRluz&ust=1692317493920000&cd=vfe&opi=89978449&ved=0CBMQ3YkBahcKEwj48eOstOKAAxUAAAAAHQAAAAAQBA))](media/neurons.png){fig-alt="A diagram comparing a biological neuron with an artificial one."}
 
 **Neurons** in an ANN are, in essence, mathematical equations. They take
 a collection of inputs, perform some operation on these inputs, and
@@ -79,7 +79,7 @@ input, which determines how much impact each input has. Weights and
 **biases** are the parameters that, through trial and error, are
 adjusted during training until the network arrives at a correct model.
 
-![](media/simplenet.jpeg)
+![A simple neural net. ([Source](https://www.google.com/url?sa=i&url=https%3A%2F%2Fpyimagesearch.com%2F2016%2F09%2F26%2Fa-simple-neural-network-with-python-and-keras%2F&psig=AOvVaw2zH4kWETNazgOuHjWkhQSp&ust=1692317874402000&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMCfiMC14oADFQAAAAAdAAAAABAJ))](media/simplenet.jpeg){fig-alt="A diagram of a very simple artificial neural network with two hidden layers."}
 
 So, the defining characteristics of an ANN are its **architecture** (how
 neurons are arranged in layers and interconnected), the **training
@@ -117,24 +117,23 @@ calculate the derivative of each parameter with respect to its impact on
 the loss function. Using a process called **backpropagation**, this
 process is relatively simple.
 
-![](media/backprop.png)
+![](media/backprop.png){fig-alt="An example of a backpropagation calculation"}
 
-Take this neuron from Andrej's first lecture, which has two inputs (x1
-and x2), two weights (w1 and w2), one bias b and the activation function
-tanh. The derivative of output o with respect to itself is 1. That\'s
-our base case. Now we can go back one step; do/dn is the derivative of
-tanh(n) at n = 0.8814, which is equal to 1-tanh(0.8814)\^2 = 0.5. So we
-can fill in the gradients of o and n with 1 and 0.5, respectively (these
+Take this neuron from Andrej's first lecture, which has two inputs ($x_1$
+and $x_2$), two weights ($w_1$ and $w_2$), one bias $b$ and the activation function
+$\tanh$. The derivative of output $o$ with respect to itself is $1$. That\'s
+our base case. Now we can go back one step; $\frac{do}{dn}$ is the derivative of
+$\tanh(n)$ at $n = 0.8814$, which is equal to $1-\tanh(0.8814)^2 = 0.5$. So we
+can fill in the gradients of $o$ and $n$ with $1$ and $0.5$, respectively (these
 are already filled in in the diagram above). The next four gradients are
 simple to calculate: since each of the four values are being added, the
-local derivative is 1 for each of them. We use the chain rule with the
-ongoing overall derivative, multiplying 0.5\*1 in each case to get a
-gradient of 0.5. To get the leftmost gradients, we calculate local
-derivatives d(w2)/d(x2w2) = x2 = 0, d(x2)/d(x2w2) = w2 = 1,
-d(w1)/d(x1w1) = x1 = 2, and finally d(x1)/d(x1w1) = w1 = -3. Now we can
-get the gradient by multiplying the local derivative by the output's
-gradient, so w2's gradient is 0\*0.5=0, x2's is 1\*0.5=0.5, w1's
-gradient is 2\*0.5=1 and x1's is -3\*0.5=-1.5.
+local derivative is $1$ for each of them. We use the chain rule with the
+ongoing overall derivative, multiplying $0.5*1$ in each case to get a
+gradient of $0.5$. To get the leftmost gradients, we calculate local
+derivatives $\frac{dw_2}{d(x_2w_2)} = x_2 = 0$, $\frac{dx_2}{d(x_2w_2)} = w_2 = 1$,
+$\frac{dw_1}{d(x_1w_1)} = x_1 = 2$, and finally $\frac{dx_1}{d(x_1w_1)} = w_1 = -3$. Now we can get the gradient by multiplying the local derivative by the output's
+gradient, so $w_2$'s gradient is $0*0.5=0$, $x_2$'s is $1*0.5=0.5$, $w_1$'s
+gradient is $2*0.5=1$ and $x_1$'s is $-3*0.5=-1.5$. This is the complete process for finding the gradient of each input with respect to the final result.
 
 There are many steps involved in calculating gradients and implementing
 backpropagation, but the arithmetic is simple. We begin with the
@@ -142,8 +141,8 @@ rightmost local derivative, then we recursively iterate left, or
 backpropagate, multiplying each node's local derivative by its output's
 gradient. These gradients are the core element we need to train our
 neural network. This is an isolated example in one neuron, but we now
-know that if we need the final output o to increase, we can achieve this
-by making the weight w1 or the bias b more positive. These parameters
+know that if we need the final output $o$ to increase, we can achieve this
+by making the weight $w_1$ or the bias $b$ more positive. These parameters
 can then be recursively adjusted until the output reaches the desired
 value. Backpropagation is the core mechanism that enables the training
 of neural networks. Using backpropagation, the parameters in a neural
@@ -164,11 +163,11 @@ where we store pairs of subsequent characters and their corresponding
 frequencies, then use these to calculate the probability that one letter
 will follow another. With this probability distribution, we can make
 reasonably accurate guesses about which letter should follow the current
-letter; for example, the letter z is highly unlikely to follow the
-letter q, so the language model would almost never pick z next when the
-current letter is q. Conversely, the letter a is a common starting
+letter; for example, the letter `z` is highly unlikely to follow the
+letter `q`, so the language model would almost never pick `z` next when the
+current letter is `q`. Conversely, the letter `a` is a common starting
 letter for names, so the model should assign a high probability that it
-follows the "start" character . (which is also the end character in this
+follows the "start" character `.` (which is also the end character in this
 implementation and the graph below).
 
 Below is a graph of these frequencies from a large dataset of words used
@@ -183,7 +182,7 @@ the probability distribution to "pick" the next character, so characters
 that appeared next to each other in the dataset are likely to appear
 next to each other in the output.
 
-![](media/matrix.png)
+![Distribution matrix from [the second lecture](https://youtu.be/PaCmpygFfXo)](media/matrix.png){fig-alt="A probability distribution matrix learned to predict a probable next character"}
 
 This is relatively sound theoretically, but you can imagine that
 choosing a character only based on the previous output isn't a very
@@ -192,27 +191,25 @@ training the model, we're simply using existing probabilities to guess
 what a good output might be. Here are some sample "names" the model
 generated in the second lecture:
 
+```
 mor.
-
 axx.
-
 minaymoryles.
-
 kondlaisah.
-
 anchshizarie.
+```
 
 These names are indisputably not very name-like. However, in order to
 improve our output, we must be able to quantify its quality in some
 standard way. To do this, we'll use the concept of **likelihood**; how
 likely an output is to be produced given a model's probability
-distribution. So the likelihood of something like emma, which is in the
-dataset, should be reasonably high and something like xqxzi which
+distribution. So the likelihood of something like `emma`, which is in the
+dataset, should be reasonably high and something like `xqxzi` which
 certainly isn't in the dataset, should be near-zero. The likelihood of
 the dataset is the product of all the individual probabilities that each
 element in the dataset could be generated. To make this more stable and
 easier to work with, instead of multiplying all of the probabilities, we
-sum the log of the individual probabilities, giving us the **log
+sum the $\log$ of the individual probabilities, giving us the **log
 likelihood**. Since probabilities are between 0 and 1, making the logs
 of the probabilities negative, we negate their sum (the log likelihood)
 and use the **negative log likelihood**. To arrive at our final measure
@@ -229,15 +226,17 @@ log likelihood. To codify inputting a character into the model to
 calculate the next character, we use "one-hot" encodings of each
 character, where an integer is encoded as a matrix where each value is
 zeroed-out except the the value at the index corresponding to the
-integer's value, which is 1. So the letter d which has index 3 would be
+integer's value, which is 1. So the letter `d` which has index `3` would be
 represented as the matrix
 
-\[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 0, 0\]
+```
+[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0]
+```
 
 Each element in this vector represents the position for one of the 27
 characters of the alphabet, plus an extra for the start/stop character
-.. To create the foundation for training the model, we can create a
+`.`. To create the foundation for training the model, we can create a
 randomly-initialized 27-by-27 matrix representing the weights: 27
 neurons, each takes 27 inputs. So when we multiply the input matrix
 (1x27) by the weights matrix (27x27), we get a 1x27 output matrix. Each
@@ -287,11 +286,11 @@ To provide more context to the model, we now define a **block size**, or
 how many previous characters are given to determine the next character
 (in "real" large language models, the block size would determine how
 many words or chunks of words are used to predict the next). Our
-training set is now the set of all substrings (of block_size length) of
+training set is now the set of all substrings (of `block_size` length) of
 names in the list of words, and the label for each substring is the
-character following it. For simplicity, let\'s assume block_size = 3.
+character following it. For simplicity, let\'s assume `block_size = 3`.
 
-![](media/multilayer.png)
+![Diagram of a Multi-Layer Perceptron ([Source](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf))](media/multilayer.png){fig-alt="A diagram of a multi-layer perceptron with a non-linear layer and a softmax regularization before output."}
 
 Another feature introduced in this section is an **embeddings layer**,
 where we define an embeddings lookup table that stores an embedding for
@@ -337,7 +336,7 @@ where the learning rate is decreased at a later point in training when
 the loss is already small, and the initial learning rate has become too
 high.
 
-![](media/learningrate.png)
+![Learning rate and loss. From [lecture 3](https://youtu.be/TCH_1BHY58I)](media/learningrate.png){fig-alt="A graph showing learning rate decreasing and increasing again."}
 
 Additional concepts that are key to be cognizant of when training a
 neural network are **overfitting** and **underfitting**. Overfitting
@@ -410,7 +409,7 @@ improvement to the model is the concept of the WaveNet, where smaller
 chunks of input data are concatenated, and these chunks are combined
 piece-by-piece.
 
-![](media/wavenet.png)
+![From the [WaveNet paper](https://arxiv.org/abs/1609.03499)](media/wavenet.png){fig-alt="A diagram of the WaveNet paper which shows how input is fed through hidden layers to be incorporated piece-by-piece into the output."}
 
 Such a model enables an even deeper neural network, where each input
 element can have a greater impact. These improvements represent only a
@@ -455,7 +454,8 @@ types of relationships between tokens. It is important to note, however,
 that tokens within a batch can only communicate with themselves; there
 is no communication between batches of data.
 
-![](media/transformer.png)
+
+![Transformer architecture ([Source](https://arxiv.org/abs/1706.03762))](media/transformer.png){fig-alt="A diagram showing the architecture of the transformer model, including how different multi-head attention layers and encodings interact."}
 
 The transformer paper suggests an architecture that stacks "attention
 layers" with multilayer perceptrons. In each attention layer, attention
@@ -523,7 +523,8 @@ is. This is where the neural network is converted from a raw neural
 network to a highly commercial product that can be sold and monetized,
 so logically these techniques are kept secret.
 
-![](media/gpt.png)
+
+![](media/gpt.png){fig-alt="A chart that shows the different steps involved in creating a usable AI from a large language model."}
 
 ## Wrapping Up
 
