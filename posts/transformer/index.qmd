@@ -168,7 +168,7 @@ corresponding token should not be given much weight. If the attention
 score was relatively large, then that value vector will be given more
 weight. The value vectors are then summed to produce the final output of
 self-attention for this one input. In the above example, we see that
-"the", "animal", "street" and "it" are given more attention than the
+"the", "animal", "street", and "it" are given more attention than the
 other words in the sequence.
 
 This was the attention mechanism for a single input token. In practice,

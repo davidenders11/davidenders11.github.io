@@ -13,13 +13,13 @@ Some other interests of mine are woodworking and welding, listening to and makin
 
 **Email:** [david.georg.enders@gmail.com](david.georg.enders@gmail.com)
 
-## Projects
+<!-- ## Projects
 
 ### All-Hands Meeting Recap Generator
-<!-- {{< video media/demo1.mov title='What is the CERN?' >}} -->
+{{< video "https://www.youtube.com/embed/l97jerdfm4w?si=BDhDJ8n4jE6WnALU&amp;controls=0" >}}
 
 ### Variational Autoencoder Implementation
 
 ### Gmail Tasks Automation
 
-### Wordle Game and Bot
+### Wordle Game and Bot -->

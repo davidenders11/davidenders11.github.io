@@ -9,3 +9,7 @@ Possible extensions:
 - Add an RSS feed to the blog
 - GitHub Actions deployment
 - Render PDF within website
+
+Notes:
+
+- Domain name `davidenders.me` is hosted by [namecheap](https://www.namecheap.com/)
