@@ -117,6 +117,15 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#about-me" id="toc-about-me" class="nav-link active" data-scroll-target="#about-me">About Me</a></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a>
+  <ul class="collapse">
+  <li><a href="#all-hands-meeting-recap-generator" id="toc-all-hands-meeting-recap-generator" class="nav-link" data-scroll-target="#all-hands-meeting-recap-generator">All-Hands Meeting Recap Generator</a></li>
+  <li><a href="#variational-autoencoder-implementation" id="toc-variational-autoencoder-implementation" class="nav-link" data-scroll-target="#variational-autoencoder-implementation">Variational Autoencoder Implementation</a></li>
+  <li><a href="#ski-bus-build" id="toc-ski-bus-build" class="nav-link" data-scroll-target="#ski-bus-build">Ski Bus Build</a></li>
+  <li><a href="#gmail-tasks-automation" id="toc-gmail-tasks-automation" class="nav-link" data-scroll-target="#gmail-tasks-automation">Gmail Tasks Automation</a></li>
+  <li><a href="#ramprail-build" id="toc-ramprail-build" class="nav-link" data-scroll-target="#ramprail-build">Ramp/Rail Build</a></li>
+  <li><a href="#wordle-game-and-bot" id="toc-wordle-game-and-bot" class="nav-link" data-scroll-target="#wordle-game-and-bot">Wordle Game and Bot</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -136,24 +145,45 @@ ul.task-list li input[type="checkbox"] {
 <p>I have work experience in embedded software engineering in the automotive space and full-stack web development, and have informal or academic experience in machine learning, compiler and programming language design, building AI-powered tools, and more. I also am participating in neural networks research, using generative models for climate prediction purposes.</p>
 <p>Some other interests of mine are woodworking and welding, listening to and making music, board sports (snowboard, surf, skate), and travelling.</p>
 <p><strong>Email:</strong> <a href="david.georg.enders@gmail.com">david.georg.enders@gmail.com</a></p>
-<!-- ## Projects
+</section>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
+<section id="all-hands-meeting-recap-generator" class="level3">
+<h3 class="anchored" data-anchor-id="all-hands-meeting-recap-generator">All-Hands Meeting Recap Generator</h3>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Dn9v5a-eBVY?si=ZU7BBmBOCWEbnVI1" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>I created an AI-powered webtool which can be used to generate a variety of meetings summaries for <a href="https://www.samba.tv/">Samba TV</a> during my 2023 summer internship. It receives certain transcripts automatically from a Zoom webhook, and others can be manually uploaded. I created a CI/CD pipeline which automatically deployed changes I made to the frontend (built using React and JavaScript) and the backend (written in Python and built using various AWS products) to multiple environments.</p>
+</section>
+<section id="variational-autoencoder-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="variational-autoencoder-implementation">Variational Autoencoder Implementation</h3>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="media/cats.png" class="img-fluid figure-img" alt="A diagram of cats that were generated using a variational autoencoder"></p>
+<figcaption class="figure-caption">Some cats we generated</figcaption>
+</figure>
+</div>
+<p>Together with three classmates in my Neural Networks class, I implemented and trained a variational autoencoder from scratch. This is a neural network which is primarily used for image generation and consists fundamentally of an encoder and a decoder with a probabilistic element that helps to prevent overfitting. We trained our network on images of cats and were able to successfully generate more images of cats. View our source code <a href="https://github.com/davidenders11/vae-project">here</a>.</p>
+</section>
+<section id="ski-bus-build" class="level3">
+<h3 class="anchored" data-anchor-id="ski-bus-build">Ski Bus Build</h3>
+<p><img src="media/bussin.png" class="img-fluid" alt="A collage of photos of the process of converting an old school bus to a ski bus."></p>
+<p>During my time as the President of the Ski and Snowboard Club at my college, the former president and good friend of mine Kirill Myagkov purchased and remodelled a decomissioned school bus for use as a ski bus. We drove the bus to Claremont from Idaho, built a 20x8 foot roof deck, installed storage shelves in the rear interior, had the bus wrapped with a sponsorship from the Ikon Pass, obtained Class B commercial driver’s licenses, and are working on installing underbelly storage. During this time, I learned a wide variety of construction techniques including welding and other metalwork and some woodworking, diagrammed and planned our various projects, fundraised a lot, and learned how to drive a school bus safely.</p>
+</section>
+<section id="gmail-tasks-automation" class="level3">
+<h3 class="anchored" data-anchor-id="gmail-tasks-automation">Gmail Tasks Automation</h3>
+<p>This project was created to minimize mundane email-writing in my personal life. I was frustrated with writing a lot of repititive emails, and decided to create a tool that would connect to my Gmail accounts and draft emails for me. Using the Google API Python Client and the OpenAI API, this command-line tool can draft individual emails or bulk-draft emails from a spreadsheet of email addresses. The user can choose whether the email should be a new message or a reply to a previous thread, and specifies which new information should be included in the emails. The source code is <a href="https://github.com/davidenders11/gmail-automation">here</a>.</p>
+</section>
+<section id="ramprail-build" class="level3">
+<h3 class="anchored" data-anchor-id="ramprail-build">Ramp/Rail Build</h3>
+<p><img src="media/ramp.png" class="img-fluid" alt="A ramp for dryland ski and snowboard practice without snow"></p>
+<p>After my first season competing with the Ski &amp; Board team, I wanted to build a ramp which could be used to practice the rail jam event even during the summer when there is no snow. My friends Mikey Ross and Will Sedo helped to build a ramp outfitted with mSnow, a type of plastic snow simulator, attached to a small jump and a rail to practice tricks on. We built the ramp in four separate parts: a platform to stand on, the ramp to slide down on, the small jump, and the rail itself. This makes it much easier to transport the entire setup, so that it can be set up on campus, in parks, in backyards, etc.</p>
+</section>
+<section id="wordle-game-and-bot" class="level3">
+<h3 class="anchored" data-anchor-id="wordle-game-and-bot">Wordle Game and Bot</h3>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/NXv3BlYHWPU?si=Eo6Jpu8-0eA4bOnV" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>My friend Cooper Smith and I created this Wordle game and bot in the summer of 2021, looking to practice our Python skills, create a UI using <code>pygame</code>, and write some logic for automatically solving a word game (which also made us better at the game). The source code is <a href="https://github.com/davidenders11/wordle-bot">here</a>.</p>
 
-### All-Hands Meeting Recap Generator
 
-
-
-
-
-
-
-
-### Variational Autoencoder Implementation
-
-### Gmail Tasks Automation
-
-### Wordle Game and Bot -->
-
-
+</section>
 </section>
 
 </main> <!-- /main -->
