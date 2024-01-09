@@ -2,7 +2,7 @@
 title: "The Game of AI: And How the Transformer Transformed It"
 author: "David Enders"
 date: "2023-10-24"
-categories: [computer science, neural networks]
+categories: [Computer Science, Neural Networks]
 ---
 For decades, the world has been fascinated with the concept of
 artificial intelligence; we have written stories about it, produced

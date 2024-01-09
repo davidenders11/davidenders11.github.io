@@ -5,6 +5,7 @@ project:
 website:
   title: "David Enders"
   search: false
+  repo-url: https://github.com/quarto-dev/quarto-demo
   navbar:
     left:
       - icon: github
@@ -13,8 +14,18 @@ website:
         href: https://linkedin.com/in/david-enders
       - icon: medium
         href: https://medium.com/@davidenders
-      - icon: envelope
-        href: mailto:david.georg.enders@gmail.com
+    right:
+      - href: /resume.pdf
+        text: Resume
+      - posts.qmd
+  navbar-mobile:
+    left:
+      - icon: github
+        href: https://github.com/davidenders11
+      - icon: linkedin
+        href: https://linkedin.com/in/david-enders
+      - icon: medium
+        href: https://medium.com/@davidenders
     right:
       - href: /resume.pdf
         text: Resume

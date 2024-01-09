@@ -3,10 +3,8 @@ title: "Introduction To Neural Networks"
 author: "David Enders"
 date: "2023-09-11"
 image: "media/thumbnail.png"
-categories: [computer science, neural networks]
+categories: [Computer Science, Neural Networks]
 ---
-# The Quest For Neural Networks Heroship
-
 Becoming a neural networks "hero" is a lofty goal to achieve in 13 hours
 of lecture, but an enticing offer for someone looking to venture into
 the world of machine learning. After spending the last summer helping
