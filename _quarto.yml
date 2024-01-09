@@ -18,18 +18,6 @@ website:
       - href: /resume.pdf
         text: Resume
       - posts.qmd
-  navbar-mobile:
-    left:
-      - icon: github
-        href: https://github.com/davidenders11
-      - icon: linkedin
-        href: https://linkedin.com/in/david-enders
-      - icon: medium
-        href: https://medium.com/@davidenders
-    right:
-      - href: /resume.pdf
-        text: Resume
-      - posts.qmd
 
 format:
   html:
