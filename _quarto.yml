@@ -7,7 +7,7 @@ website:
   search: false
   repo-url: https://github.com/quarto-dev/quarto-demo
   navbar:
-    left:
+    tools:
       - icon: github
         href: https://github.com/davidenders11
       - icon: linkedin
