@@ -2,7 +2,6 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/gmail-automation/index.html",
       "/posts/transformer/index.html",
       "/posts/neural-nets-intro/index.html"
     ]

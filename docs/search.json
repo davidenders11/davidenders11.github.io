@@ -18,7 +18,7 @@
     "href": "posts.html",
     "title": "My Writing",
     "section": "",
-    "text": "Automate Mundane Tasks on Gmail With My Open Source Tool\n\n\n\n\n\n\n\nComputer Science\n\n\nPython\n\n\nAI-Powered Tools\n\n\n\n\n\n\n\n\n\n\n\nJan 6, 2024\n\n\nDavid Enders\n\n\n\n\n\n\n  \n\n\n\n\nThe Game of AI: And How the Transformer Transformed It\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2023\n\n\nDavid Enders\n\n\n\n\n\n\n  \n\n\n\n\nIntroduction To Neural Networks\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nDavid Enders\n\n\n\n\n\n\nNo matching items"
+    "text": "The Game of AI: And How the Transformer Transformed It\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2023\n\n\nDavid Enders\n\n\n\n\n\n\n  \n\n\n\n\nIntroduction To Neural Networks\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nDavid Enders\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/transformer/index.html",
@@ -159,12 +159,5 @@
     "title": "blog",
     "section": "",
     "text": "No matching items"
-  },
-  {
-    "objectID": "posts/gmail-automation/index.html",
-    "href": "posts/gmail-automation/index.html",
-    "title": "Automate Mundane Tasks on Gmail With My Open Source Tool",
-    "section": "",
-    "text": "In this post, I’ll go over how to use an open-source command line tool (CLI) I created to do away with mundane, repetitive email tasks. Check out the source code:\n\n\n\n\nThis tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is very similar, but a simple copy-and-paste won’t suffice, as each email has to be tailored to a unique relationship or context."
   }
 ]

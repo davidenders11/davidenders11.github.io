@@ -9,6 +9,7 @@ Possible extensions:
 - Add an RSS feed to the blog
 - GitHub Actions deployment
 - Render PDF within website
+- Put profile pic and bio side by side
 
 Notes:
 
