@@ -2,7 +2,6 @@
 title: "Automate Mundane Tasks on Gmail With My Open Source Tool"
 author: "David Enders"
 date: "2024-01-06"
-# image: "media/thumbnail.png"
 categories: [Computer Science, Python, AI-Powered Tools]
 draft: true
 ---
@@ -13,3 +12,20 @@ In this post, I'll go over how to use an open-source command line tool (CLI) I c
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
 This tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is very similar, but a simple copy-and-paste won't suffice, as each email has to be tailored to a unique relationship or context.
+
+So I created a tool that addresses all of these problems. All you do is write a subject line, specify a recipient, and add some bulletpoints with information that should be included in the messages, and the tool retrieves past interactions with that recipient for context, and writes a new message in your Gmail drafts, so you can simply review it and send it away. 
+
+## How It Works
+
+The project is basically a CLI, or a command line tool, built in Python. I used the `argparse` library to simplify specifying options (such as whether the message is a new draft or a reply to an existing chain), I used the [OpenAI API](https://platform.openai.com/docs/api-reference) to connect to generative AI to draft the messages and I used the [Gmail API](https://developers.google.com/gmail/api/guides) to read and write emails from the user's account.
+
+This is how the tool works:
+
+- First, the user specifies a single email address or a local excel spreadsheet to read email addresses from, and decides whether emails should be new messages or replies
+- The tool authenticates to the user's gmail account. This will allow it to read past messages and add new messages to the draft folder. 
+- When this authentication is complete, the tool asks the user what they would like to tell their recipients, and what subject line to use if it's a new message
+- The user's Gmail account is queried to pull recent interactions with the recipients, and these are compiled to a single string
+- The new information the user specified is given to the OpenAI Chat Completion API, together with context from previous interactions, and the AI is prompted to draft an email using this information.
+- The subject line and email draft are passed back to the Gmail API to create a new draft, which is then ready to review and send by the user.
+
+## How To Use It:

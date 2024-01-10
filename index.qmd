@@ -1,7 +1,7 @@
 ---
 ---
 
-## About Me
+# About Me
 
 ![](media/headshot.jpg){fig-align="left" width="300"}
 
@@ -9,11 +9,11 @@ I'm a fourth year student at Claremont McKenna College, majoring in computer sci
 
 I have work experience in embedded software engineering in the automotive space and full-stack web development, and have informal or academic experience in machine learning, compiler and programming language design, building AI-powered tools, and more. I also am participating in neural networks research, using generative models for climate prediction purposes.
 
-Some other interests of mine are woodworking and welding, listening to and making music, board sports (snowboard, surf, skate), and travelling. 
+Some other interests of mine are woodworking and welding, listening to and making music, board sports (snowboard, surf, skate), cooking, and travelling. 
 
 **Email:** [david.georg.enders@gmail.com](david.georg.enders@gmail.com)
 
-## Projects
+# Projects
 
 ### All-Hands Meeting Recap Generator
 {{< video "https://www.youtube.com/embed/Dn9v5a-eBVY?si=ZU7BBmBOCWEbnVI1" >}}
