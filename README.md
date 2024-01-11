@@ -10,6 +10,7 @@ Possible extensions:
 - GitHub Actions deployment
 - Render PDF within website
 - Put profile pic and bio side by side
+- Add comments to blogs
 
 Notes:
 

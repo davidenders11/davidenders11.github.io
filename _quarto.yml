@@ -6,9 +6,11 @@ website:
   title: "David Enders"
   favicon: media/favicon.ico
   twitter-card:
+    title: David Enders
     description: David Enders' personal website. Projects, resume, and blog posts.
     image: media/headshot.jpg
   open-graph:
+    title: David Enders
     description: David Enders' personal website. Projects, resume, and blog posts.
     image: media/headshot.jpg
   search: false

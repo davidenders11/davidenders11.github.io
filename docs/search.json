@@ -18,7 +18,7 @@
     "href": "posts.html",
     "title": "My Writing",
     "section": "",
-    "text": "The Game of AI: And How the Transformer Transformed It\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2023\n\n\nDavid Enders\n\n\n\n\n\n\n  \n\n\n\n\nIntroduction To Neural Networks\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nDavid Enders\n\n\n\n\n\n\nNo matching items"
+    "text": "Automate Mundane Tasks on Gmail With My Open Source Tool\n\n\n\n\n\n\n\nComputer Science\n\n\nPython\n\n\nAI-Powered Tools\n\n\n\n\n\n\n\n\n\n\n\nJan 6, 2024\n\n\nDavid Enders\n\n\n\n\n\n\n  \n\n\n\n\nThe Game of AI: And How the Transformer Transformed It\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2023\n\n\nDavid Enders\n\n\n\n\n\n\n  \n\n\n\n\nIntroduction To Neural Networks\n\n\n\n\n\n\n\nComputer Science\n\n\nNeural Networks\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nDavid Enders\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/transformer/index.html",
@@ -54,6 +54,41 @@
     "title": "The Game of AI: And How the Transformer Transformed It",
     "section": "Impact and Applications",
     "text": "Impact and Applications\nThe transformer architecture is relatively simple, yet its impacts have been broad. The underlying improvement is the attention mechanism; previously, language models would have trouble distinguishing important keywords in a long input sequence, which provides a significant roadblock to quality output. With the transformer, we see the development of chatbots that pass the Turing Test, solving the decades-old challenge, as well as neural networks that can generate and understand images, solve complex scientific problems like protein structure prediction, and use computer vision to make progress toward fully self-driving cars. The transformer is unique in its versatility; before it was released, many of the models that are now trained using the transformer architecture used widely divergent architectures.\nBesides the attention mechanism, the transformer’s most important characteristic is its computational efficiency, due to the parallel nature of the matrix operations inherent to its architecture. This has allowed transformer-based models to increase exponentially in size; in 2018, the first GPT released by OpenAI had 0.12 billion parameters — now, GPT-4 is estimated to have trillions of parameters. This is advantageous as it enable bigger and more powerful models, but also has lead to a new consideration: the environmental impact of training and using neural networks.\nGPT-3, with a model size of 175 billion parameters, has been estimated to require 355 years of training time and $4.6 million in compute cost if it were trained on a single GPU. The associated carbon footprint is “equivalent to driving 112 gasoline powered cars for a year,” according to this blog post from the Columbia Climate School. This is a staggering amount of computation; computation that is often powered by fossil fuels and also requires huge amounts of fresh water for cooling. Other papers have discussed the dangers of training models on unfiltered and unregulated data, arguing that the size of the dataset doesn’t necessarily guarantee its diversity. So, while the transformer has revolutionized how neural networks are trained and helped to blow winds into the sails of deep learning research and public interest in artificial intelligence, it is not a perfect model, and should be modified so that environmental costs and the model’s biases are considered."
+  },
+  {
+    "objectID": "posts/gmail-automation/index.html",
+    "href": "posts/gmail-automation/index.html",
+    "title": "Automate Mundane Tasks on Gmail With My Open Source Tool",
+    "section": "",
+    "text": "In this post, I’ll go over how to use an open-source command line tool (CLI) I created to do away with mundane, repetitive email tasks. Check out the source code:\nThis tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is similar, but a simple copy-and-paste won’t suffice, as each email has to be tailored to a unique relationship or context.\nSo I created a tool that addresses all of these problems. All you do is write a subject line, specify a recipient, and add some bulletpoints with information that should be included in the messages, and the tool retrieves past interactions with that recipient for context, and writes a new message in your Gmail drafts, so you can simply review it and send it away."
+  },
+  {
+    "objectID": "posts/gmail-automation/index.html#how-it-works",
+    "href": "posts/gmail-automation/index.html#how-it-works",
+    "title": "Automate Mundane Tasks on Gmail With My Open Source Tool",
+    "section": "How It Works",
+    "text": "How It Works\nThe tool is currently used as a CLI, or a command line interface, built in Python. I used the argparse library to simplify specifying options (such as whether the message is a new draft or a reply to an existing chain), I used the OpenAI API to connect to generative AI to draft the messages and I used the Gmail API to read and write emails from the user’s account.\nThis is how the tool works:\n\nFirst, the user specifies a single email address or a local excel spreadsheet to read email addresses from, and decides whether emails should be new messages or replies\nThe tool authenticates to the user’s gmail account. This will allow it to read past messages and add new messages to the draft folder.\nWhen this authentication is complete, the tool asks the user what they would like to tell their recipients, and what subject line to use if it’s a new message\nThe user’s Gmail account is queried to pull recent interactions with the recipients, and these are compiled to a single string\nThe new information the user specified is given to the OpenAI Chat Completion API, together with context from previous interactions, and the AI is prompted to draft an email using this information.\nThe subject line and email draft are passed back to the Gmail API to create a new draft, which is then ready to review and send by the user."
+  },
+  {
+    "objectID": "posts/gmail-automation/index.html#how-to-set-it-up",
+    "href": "posts/gmail-automation/index.html#how-to-set-it-up",
+    "title": "Automate Mundane Tasks on Gmail With My Open Source Tool",
+    "section": "How To Set It Up :",
+    "text": "How To Set It Up :\nClone the repo:\ngit clone git@github.com:davidenders11/gmail-automation.git\nYou’ll need to create a Google Cloud project in order to generate credentials: follow this guide (no need to run the quickstart.py sample). This will allow you to add your email addresses to the Google Cloud project. As the guide mentions, you must add each email address you’d like to use for testing as a “test user”.\nCreate an account on openai.com and create a new secret API key. If you’d like you could also modify the code to connect to a different generative AI OpenAI, or use an open-source model. But if you’re sticking with OpenAI, simply create a file named secrets.json in the root directory of the repo and populate with the following content:\n{\n  \"openai\": \"YOUR_OPENAI_API_KEY\"\n}\nRemember that API keys should never be pushed to your repository or shared. There are many better ways to store API keys than this, and this method should only be used temporarily for testing. The .gitignore in the repo should keep you from pushing secrets.json, but doublecheck you haven’t accidentally added it to your commit.\nOnce you have the OpenAI key in your local directory and the Gmail accounts you’d like to use have been added to the Google Cloud project, you are ready to use the tool."
+  },
+  {
+    "objectID": "posts/gmail-automation/index.html#how-to-use-the-tool",
+    "href": "posts/gmail-automation/index.html#how-to-use-the-tool",
+    "title": "Automate Mundane Tasks on Gmail With My Open Source Tool",
+    "section": "How To Use The Tool:",
+    "text": "How To Use The Tool:\nRun main.py [-h] [--reply] [--verbose] recipient\n\nthe --reply flag indicates that you would like to reply to a thread instead of writing a new email. The default is a new email.\nthe --verbose flag indicates that logging should be displayed, which will give you debugging info and progress updates.\nthe recipient argument is the email address of your intended recipient OR an excel file containing email addresses\n\nThe tool will look for an Email column, so make sure that the addresses are all organized in one column with the header Email if you are using a spreadsheet (must be .xslx)\n\n\nAfter running the initial command, you will first need to authenticate (log in to) your Gmail account. You will then be asked for additional information, such as the content you would like to add to your message, among other things. The tool will then post your message to the drafts folder of your Gmail account, where you can review and send it."
+  },
+  {
+    "objectID": "posts/gmail-automation/index.html#final-notes",
+    "href": "posts/gmail-automation/index.html#final-notes",
+    "title": "Automate Mundane Tasks on Gmail With My Open Source Tool",
+    "section": "Final notes:",
+    "text": "Final notes:\nThanks for reading, and I hope you enjoy using the tool! If you have any suggestions for improvement or questions, reach out to me or make a pull request on the repo!"
   },
   {
     "objectID": "posts/neural-nets-intro/index.html",

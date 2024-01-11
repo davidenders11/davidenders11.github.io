@@ -2,8 +2,8 @@
 title: "Automate Mundane Tasks on Gmail With My Open Source Tool"
 author: "David Enders"
 date: "2024-01-06"
+image: media/thumbnail.png
 categories: [Computer Science, Python, AI-Powered Tools]
-draft: true
 ---
 
 In this post, I'll go over how to use an open-source command line tool (CLI) I created to do away with mundane, repetitive email tasks. Check out the source code:
@@ -11,13 +11,13 @@ In this post, I'll go over how to use an open-source command line tool (CLI) I c
 <div class="github-card" data-github="davidenders11/gmail-automation" data-width="400" data-height="" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
-This tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is very similar, but a simple copy-and-paste won't suffice, as each email has to be tailored to a unique relationship or context.
+This tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is similar, but a simple copy-and-paste won't suffice, as each email has to be tailored to a unique relationship or context.
 
 So I created a tool that addresses all of these problems. All you do is write a subject line, specify a recipient, and add some bulletpoints with information that should be included in the messages, and the tool retrieves past interactions with that recipient for context, and writes a new message in your Gmail drafts, so you can simply review it and send it away. 
 
 ## How It Works
 
-The project is basically a CLI, or a command line tool, built in Python. I used the `argparse` library to simplify specifying options (such as whether the message is a new draft or a reply to an existing chain), I used the [OpenAI API](https://platform.openai.com/docs/api-reference) to connect to generative AI to draft the messages and I used the [Gmail API](https://developers.google.com/gmail/api/guides) to read and write emails from the user's account.
+The tool is currently used as a CLI, or a command line interface, built in Python. I used the `argparse` library to simplify specifying options (such as whether the message is a new draft or a reply to an existing chain), I used the [OpenAI API](https://platform.openai.com/docs/api-reference) to connect to generative AI to draft the messages and I used the [Gmail API](https://developers.google.com/gmail/api/guides) to read and write emails from the user's account.
 
 This is how the tool works:
 
@@ -28,4 +28,39 @@ This is how the tool works:
 - The new information the user specified is given to the OpenAI Chat Completion API, together with context from previous interactions, and the AI is prompted to draft an email using this information.
 - The subject line and email draft are passed back to the Gmail API to create a new draft, which is then ready to review and send by the user.
 
-## How To Use It:
+## How To Set It Up :
+
+Clone [the repo](https://github.com/davidenders11/gmail-automation):
+
+```
+git clone git@github.com:davidenders11/gmail-automation.git
+```
+
+You'll need to create a Google Cloud project in order to generate credentials: follow [this guide](https://developers.google.com/gmail/api/quickstart/python) (no need to run the `quickstart.py` sample). This will allow you to add your email addresses to the Google Cloud project. As the guide mentions, you must add each email address you'd like to use for testing as a "test user".
+
+Create an account on [openai.com](openai.com) and create a new secret API key. If you'd like you could also modify the code to connect to a different generative AI OpenAI, or use an open-source model. But if you're sticking with OpenAI, simply create a file named `secrets.json` in the root directory of the repo and populate with the following content:
+
+```
+{
+  "openai": "YOUR_OPENAI_API_KEY"
+}
+```
+
+**Remember that API keys should never be pushed to your repository or shared.** There are many better ways to store API keys than this, and this method should only be used temporarily for testing. The `.gitignore` in the repo should keep you from pushing `secrets.json`, but doublecheck you haven't accidentally added it to your commit.
+
+Once you have the OpenAI key in your local directory and the Gmail accounts you'd like to use have been added to the Google Cloud project, you are ready to use the tool.
+
+## How To Use The Tool:
+
+Run `main.py [-h] [--reply] [--verbose] recipient`
+
+- the `--reply` flag indicates that you would like to reply to a thread instead of writing a new email. The default is a new email.
+- the `--verbose` flag indicates that logging should be displayed, which will give you debugging info and progress updates.
+- the `recipient` argument is the email address of your intended recipient OR an excel file containing email addresses
+    - The tool will look for an `Email` column, so make sure that the addresses are all organized in one column with the header `Email` if you are using a spreadsheet (must be `.xslx`)
+
+After running the initial command, you will first need to authenticate (log in to) your Gmail account. You will then be asked for additional information, such as the content you would like to add to your message, among other things. The tool will then post your message to the drafts folder of your Gmail account, where you can review and send it.
+
+## Final notes:
+
+Thanks for reading, and I hope you enjoy using the tool! If you have any suggestions for improvement or questions, [reach out to me](david.georg.enders@gmail.com) or make a pull request on the [repo!](https://github.com/davidenders11/gmail-automation)

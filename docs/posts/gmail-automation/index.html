@@ -55,11 +55,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="David Enders - Automate Mundane Tasks on Gmail With My Open Source Tool">
+<meta property="og:title" content="David Enders">
 <meta property="og:description" content="David Enders’ personal website. Projects, resume, and blog posts.">
 <meta property="og:image" content="media/headshot.jpg">
 <meta property="og:site-name" content="David Enders">
-<meta name="twitter:title" content="David Enders - Automate Mundane Tasks on Gmail With My Open Source Tool">
+<meta name="twitter:title" content="David Enders">
 <meta name="twitter:description" content="David Enders’ personal website. Projects, resume, and blog posts.">
 <meta name="twitter:image" content="media/headshot.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -109,7 +109,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link active" data-scroll-target="#how-it-works">How It Works</a></li>
-  <li><a href="#how-to-use-it" id="toc-how-to-use-it" class="nav-link" data-scroll-target="#how-to-use-it">How To Use It:</a></li>
+  <li><a href="#how-to-set-it-up" id="toc-how-to-set-it-up" class="nav-link" data-scroll-target="#how-to-set-it-up">How To Set It Up :</a></li>
+  <li><a href="#how-to-use-the-tool" id="toc-how-to-use-the-tool" class="nav-link" data-scroll-target="#how-to-use-the-tool">How To Use The Tool:</a></li>
+  <li><a href="#final-notes" id="toc-final-notes" class="nav-link" data-scroll-target="#final-notes">Final notes:</a></li>
   </ul>
 </nav>
     </div>
@@ -155,11 +157,11 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-<p>This tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is very similar, but a simple copy-and-paste won’t suffice, as each email has to be tailored to a unique relationship or context.</p>
+<p>This tool was born out of the frustration of spending unnecessary hours completing extremely repetive tasks on email. So often have I spent time writing basically the same email with minor modifications to a daunting roster of contacts, whether for a personal pursuit or as part of a job I worked. Reaching out to recruit potential speakers for an environmental conference I helped to organize. Emailing professors to ask for permission to enroll in an over-enrolled class. Facilitating fundraising campaigns during my time as President of the Claremont Colleges Ski Club. These are all situations where each email sent is similar, but a simple copy-and-paste won’t suffice, as each email has to be tailored to a unique relationship or context.</p>
 <p>So I created a tool that addresses all of these problems. All you do is write a subject line, specify a recipient, and add some bulletpoints with information that should be included in the messages, and the tool retrieves past interactions with that recipient for context, and writes a new message in your Gmail drafts, so you can simply review it and send it away.</p>
 <section id="how-it-works" class="level2">
 <h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
-<p>The project is basically a CLI, or a command line tool, built in Python. I used the <code>argparse</code> library to simplify specifying options (such as whether the message is a new draft or a reply to an existing chain), I used the <a href="https://platform.openai.com/docs/api-reference">OpenAI API</a> to connect to generative AI to draft the messages and I used the <a href="https://developers.google.com/gmail/api/guides">Gmail API</a> to read and write emails from the user’s account.</p>
+<p>The tool is currently used as a CLI, or a command line interface, built in Python. I used the <code>argparse</code> library to simplify specifying options (such as whether the message is a new draft or a reply to an existing chain), I used the <a href="https://platform.openai.com/docs/api-reference">OpenAI API</a> to connect to generative AI to draft the messages and I used the <a href="https://developers.google.com/gmail/api/guides">Gmail API</a> to read and write emails from the user’s account.</p>
 <p>This is how the tool works:</p>
 <ul>
 <li>First, the user specifies a single email address or a local excel spreadsheet to read email addresses from, and decides whether emails should be new messages or replies</li>
@@ -170,8 +172,34 @@ ul.task-list li input[type="checkbox"] {
 <li>The subject line and email draft are passed back to the Gmail API to create a new draft, which is then ready to review and send by the user.</li>
 </ul>
 </section>
-<section id="how-to-use-it" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-it">How To Use It:</h2>
+<section id="how-to-set-it-up" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-set-it-up">How To Set It Up :</h2>
+<p>Clone <a href="https://github.com/davidenders11/gmail-automation">the repo</a>:</p>
+<pre><code>git clone git@github.com:davidenders11/gmail-automation.git</code></pre>
+<p>You’ll need to create a Google Cloud project in order to generate credentials: follow <a href="https://developers.google.com/gmail/api/quickstart/python">this guide</a> (no need to run the <code>quickstart.py</code> sample). This will allow you to add your email addresses to the Google Cloud project. As the guide mentions, you must add each email address you’d like to use for testing as a “test user”.</p>
+<p>Create an account on <a href="openai.com">openai.com</a> and create a new secret API key. If you’d like you could also modify the code to connect to a different generative AI OpenAI, or use an open-source model. But if you’re sticking with OpenAI, simply create a file named <code>secrets.json</code> in the root directory of the repo and populate with the following content:</p>
+<pre><code>{
+  "openai": "YOUR_OPENAI_API_KEY"
+}</code></pre>
+<p><strong>Remember that API keys should never be pushed to your repository or shared.</strong> There are many better ways to store API keys than this, and this method should only be used temporarily for testing. The <code>.gitignore</code> in the repo should keep you from pushing <code>secrets.json</code>, but doublecheck you haven’t accidentally added it to your commit.</p>
+<p>Once you have the OpenAI key in your local directory and the Gmail accounts you’d like to use have been added to the Google Cloud project, you are ready to use the tool.</p>
+</section>
+<section id="how-to-use-the-tool" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-the-tool">How To Use The Tool:</h2>
+<p>Run <code>main.py [-h] [--reply] [--verbose] recipient</code></p>
+<ul>
+<li>the <code>--reply</code> flag indicates that you would like to reply to a thread instead of writing a new email. The default is a new email.</li>
+<li>the <code>--verbose</code> flag indicates that logging should be displayed, which will give you debugging info and progress updates.</li>
+<li>the <code>recipient</code> argument is the email address of your intended recipient OR an excel file containing email addresses
+<ul>
+<li>The tool will look for an <code>Email</code> column, so make sure that the addresses are all organized in one column with the header <code>Email</code> if you are using a spreadsheet (must be <code>.xslx</code>)</li>
+</ul></li>
+</ul>
+<p>After running the initial command, you will first need to authenticate (log in to) your Gmail account. You will then be asked for additional information, such as the content you would like to add to your message, among other things. The tool will then post your message to the drafts folder of your Gmail account, where you can review and send it.</p>
+</section>
+<section id="final-notes" class="level2">
+<h2 class="anchored" data-anchor-id="final-notes">Final notes:</h2>
+<p>Thanks for reading, and I hope you enjoy using the tool! If you have any suggestions for improvement or questions, <a href="david.georg.enders@gmail.com">reach out to me</a> or make a pull request on the <a href="https://github.com/davidenders11/gmail-automation">repo!</a></p>
 
 
 </section>
