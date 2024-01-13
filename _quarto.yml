@@ -1,5 +1,6 @@
 project:
   type: website
+  title: "David Enders"
   output-dir: docs
 
 website:
