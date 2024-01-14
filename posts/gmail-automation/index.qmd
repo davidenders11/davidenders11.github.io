@@ -63,4 +63,4 @@ After running the initial command, you will first need to authenticate (log in t
 
 ## Final notes:
 
-Thanks for reading, and I hope you enjoy using the tool! If you have any suggestions for improvement or questions, [reach out to me](david.georg.enders@gmail.com) or make a pull request on the [repo!](https://github.com/davidenders11/gmail-automation)
+Thanks for reading, and I hope you enjoy using the tool! If you have any suggestions for improvement or questions, [reach out to me](david.georg.enders@gmail.com) or make a pull request on the [repo!](https://github.com/davidenders11/gmail-automation). I also have a short demo of the tool in action on my website's [homepage](https://davidenders.me/#gmail-tasks-automation).
