@@ -4,3 +4,4 @@
 /.quarto/
 /blog-sample/
 /_site/
+**/*.quarto_ipynb

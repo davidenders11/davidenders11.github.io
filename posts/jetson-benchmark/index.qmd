@@ -1,0 +1,89 @@
+---
+title: "Evaluating Jetson Compute Performance for Edge CV Workloads"
+author: "David Enders"
+date: "2026-06-15"
+image: "media/thumbnail.png"
+categories: [Computer Science, Edge Computing]
+---
+# Motivation
+When choosing compute units for edge computer vision workloads, we are primarily concerned with inference capability and memory bandwidth comparisons. In this exploration, we will compare the Jetson AGX Xavier 64GB [link to product](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-series/) [link to datasheet](https://connecttech.com/ftp/pdf/Jetson_AGX_Xavier_Industrial_Datasheet.pdf) against the Orin NX 16GB [link to product](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) [link to datasheet](https://developer.download.nvidia.com/assets/embedded/secure/jetson/orin_nx/docs/Jetson_Orin_NX_DS-10712-001_v0.5.pdf?t=eyJscyI6ImdzZW8iLCJsc2QiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9&__token__=exp=1781732583~hmac=de9296f91aab741d4d80c2c3561c7cf8c45b9838e20be3ddac9751cc92d278ed). 
+
+## Testing
+We want to focus on four main metrics: inference FPS, CPU performance, memory bandwidth, and video encoding. In this section, I will discuss the metrics we are interested in, the approach for benchmarking these, and show results. For detailed setup steps, please see "Setup" at the bottom.
+
+#### Model Build and Inference Benchmarking
+To benchmark inference performance, we will use the `trtexec` executable to compare execution times both for conversion of onnx files to engine files, and for model inference. We will compile and run two models. Each of these are YOLO object detector models. One has batch size 1, 640×416 resolution, and FP16 accuracy, and the other has batch size 7, 256×448 resolution, and also uses FP16. Since the onnx->engine conversion were only run once, this is not a rigorous examination, but still we can see the performance on Orin is consistently better.
+
+##### Build Times:
+Using `/usr/src/tensorrt/bin/trtexec --onnx=<filename.onnx> --saveEngine=<filename.engine> --fp16 --buildOnly`
+Batched model engine build time Orin NX: 635.54 seconds
+Batched model engine build time Xavier AGX: 868.481 seconds
+Single-image model engine build time Orin NX: 498.424 seconds
+Single-image model engine build time Xavier AGX: 1027.14 seconds
+
+##### Inference Results:
+Using `/usr/src/tensorrt/bin/trtexec --loadEngine=<filename.engine> --warmUp=200 --duration=30`
+| Device       | Model        | Throughput (qps) | Mean GPU Compute (ms) | Mean Enqueue Time (ms) |
+|--------------|--------------|----------------:|----------------------:|-----------------------:|
+| Orin NX      | Single-image |          312.64 |                  3.20 |                   2.02 |
+| Orin NX      | Batched      |          131.10 |                  7.62 |                   2.07 |
+| AGX Xavier   | Single-image |          187.39 |                  5.33 |                   1.50 |
+| AGX Xavier   | Batched      |           83.74 |                 11.89 |                   1.46 |
+
+#### CPU Comparison
+Using `sysbench cpu --threads=8 --time=30 run`
+
+| Device     | Events/sec | Avg Latency (ms) | p95 Latency (ms) | Max Latency (ms) |
+|------------|----------:|----------------:|-----------------:|-----------------:|
+| Orin NX    |   18308.71 |            0.44 |             0.44 |            12.95 |
+| AGX Xavier |   14110.05 |            0.57 |             0.60 |            39.07 |
+
+#### Memory Bandwidth
+Using `sysbench memory --memory-block-size=8M --memory-total-size=500G --time=30 run`
+
+| Device     | Bandwidth (MiB/sec) | Ops/sec | Avg Latency (ms) | p95 Latency (ms) |
+|------------|--------------------:|--------:|-----------------:|-----------------:|
+| Orin NX    |            14962.66 | 1870.33 |             0.53 |             0.56 |
+| AGX Xavier |            16765.23 | 2095.65 |             0.48 |             0.56 |
+
+
+#### Video Encoding
+Using `gst-launch-1.0 videotestsrc num-buffers=10000 ! video/x-raw,width=1920,height=1080,framerate=30/1 ! nvvidconv ! nvv4l2h264enc ! fakesink sync=false` (1920×1080 H264, 10,000 frames, hardware encoder via nvv4l2h264enc).
+
+| Device     | Wall Time  | Encoding Throughput |
+|------------|------------|--------------------:|
+| Orin NX    | 1m39.975s  |             100.0 fps |
+| AGX Xavier | 2m27.367s  |              67.9 fps |
+
+
+## Results
+
+Across inference, CPU, and video encoding benchmarks, the Orin NX 16GB outperforms the AGX Xavier 64GB despite being a lower-cost module. Memory bandwidth is the one area where the Xavier holds an advantage.
+
+**Inference** — The Orin NX delivers roughly 1.7× the throughput of the Xavier on both model configurations (312 vs 187 qps single-image, 131 vs 84 qps batched). GPU compute time follows the same ratio. Engine build time differences are more variable but Orin NX still demonstrates a clear performance bosot.
+
+**CPU** — The Orin NX is about 30% faster on the sysbench prime-number workload (18,309 vs 14,110 events/sec). The Xavier also shows much higher max latency spikes (39ms vs 13ms), suggesting less consistent CPU scheduling under load.
+
+**Memory bandwidth** — The Xavier shows slightly better memory bandwidth (16,765 vs 14,963 MiB/sec). This is not a huge surprise Xavier has a 256-bit memory interface and Orin has a 128-bit interface. The Orin NX's faster memory standard (LPDDR5 vs. LPDDR4x) partially closes the gap, so in practice this performance discrepancy is likely manageable.
+
+**Video encoding** — The Orin NX encodes 1920×1080 H264 at ~100 fps vs ~68 fps on the Xavier (≈1.47× faster), completing the same 10,000-frame job in 1m40s vs 2m27s.
+
+**Summary** — Orin NX is likely a better option for most use cases: faster inference, faster CPU, faster video encoding, and a lower price point. We should be able to optimize memory usage to fit these constraints.
+
+## Setup
+These steps were necessary to prepare both Jetson compute units for benchmarking:
+```
+sudo apt update && sudo apt -y install dnsutils ssh curl vim libnvinfer-bin glances sysbench python3.10-venv # python3.8-venv on xavier 
+
+# agx xavier only:
+sudo apt install -y cuda-cudart-11-4 libcudla-11-4
+
+# add trtexec to path:
+echo 'export PATH=/usr/src/tensorrt/bin:$PATH' >> ~/.bashrc && source ~/.bashrc
+# agx only:
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.4/targets/aarch64-linux/lib:$LD_LIBRARY_PATH' >> ~/.bashrc && source ~/.bashrc
+
+# set power mode to MAXN:
+sudo nvpmodel -m 0 --force
+```
+At this point, the device should be set up to use the necessary tools we will use for benchmarking. This can be validated by running `trtexec` in the command line and confirming this will run.
