@@ -2,13 +2,10 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/jetson-benchmark/index.html",
       "/posts/gmail-automation/index.html",
       "/posts/transformer/index.html",
       "/posts/neural-nets-intro/index.html"
     ]
-  },
-  {
-    "listing": "/blog-sample/index.html",
-    "items": []
   }
 ]
