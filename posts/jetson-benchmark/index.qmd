@@ -23,6 +23,7 @@ Single-image model engine build time Xavier AGX: 1027.14 seconds
 
 ##### Inference Results:
 Using `/usr/src/tensorrt/bin/trtexec --loadEngine=<filename.engine> --warmUp=200 --duration=30`
+
 | Device       | Model        | Throughput (qps) | Mean GPU Compute (ms) | Mean Enqueue Time (ms) |
 |--------------|--------------|----------------:|----------------------:|-----------------------:|
 | Orin NX      | Single-image |          312.64 |                  3.20 |                   2.02 |
