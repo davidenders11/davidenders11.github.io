@@ -161,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="motivation" class="level1">
 <h1>Motivation</h1>
-<p>When choosing compute units for edge computer vision workloads, we are primarily concerned with inference capability and memory bandwidth comparisons. In this exploration, we will compare the Jetson AGX Xavier 64GB <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-series/">link to product</a> <a href="https://connecttech.com/ftp/pdf/Jetson_AGX_Xavier_Industrial_Datasheet.pdf">link to datasheet</a> against the Orin NX 16GB <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/">link to product</a> <a href="https://developer.download.nvidia.com/assets/embedded/secure/jetson/orin_nx/docs/Jetson_Orin_NX_DS-10712-001_v0.5.pdf?t=eyJscyI6ImdzZW8iLCJsc2QiOiJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9&amp;__token__=exp=1781732583~hmac=de9296f91aab741d4d80c2c3561c7cf8c45b9838e20be3ddac9751cc92d278ed">link to datasheet</a>.</p>
+<p>When choosing compute units for edge computer vision workloads, we are primarily concerned with inference capability and memory bandwidth comparisons. In this exploration, we will compare the Jetson AGX Xavier 64GB <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-series/">link to product</a> <a href="https://connecttech.com/ftp/pdf/Jetson_AGX_Xavier_Industrial_Datasheet.pdf">link to datasheet</a> against the Orin NX 16GB <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/">link to product</a> <a href="https://gzhls.at/blob/ldb/f/9/d/d/5633fb3e3218e1908bb2032278c63e176dc0.pdf">link to datasheet</a>.</p>
 <section id="testing" class="level2">
 <h2 class="anchored" data-anchor-id="testing">Testing</h2>
 <p>We want to focus on four main metrics: inference FPS, CPU performance, memory bandwidth, and video encoding. In this section, I will discuss the metrics we are interested in, the approach for benchmarking these, and show results. For detailed setup steps, please see “Setup” at the bottom.</p>
@@ -174,7 +174,55 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="inference-results" class="level5">
 <h5 class="anchored" data-anchor-id="inference-results">Inference Results:</h5>
-<p>Using <code>/usr/src/tensorrt/bin/trtexec --loadEngine=&lt;filename.engine&gt; --warmUp=200 --duration=30</code> | Device | Model | Throughput (qps) | Mean GPU Compute (ms) | Mean Enqueue Time (ms) | |————–|————–|—————-:|———————-:|———————–:| | Orin NX | Single-image | 312.64 | 3.20 | 2.02 | | Orin NX | Batched | 131.10 | 7.62 | 2.07 | | AGX Xavier | Single-image | 187.39 | 5.33 | 1.50 | | AGX Xavier | Batched | 83.74 | 11.89 | 1.46 |</p>
+<p>Using <code>/usr/src/tensorrt/bin/trtexec --loadEngine=&lt;filename.engine&gt; --warmUp=200 --duration=30</code></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 18%">
+<col style="width: 25%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Model</th>
+<th style="text-align: right;">Throughput (qps)</th>
+<th style="text-align: right;">Mean GPU Compute (ms)</th>
+<th style="text-align: right;">Mean Enqueue Time (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Orin NX</td>
+<td>Single-image</td>
+<td style="text-align: right;">312.64</td>
+<td style="text-align: right;">3.20</td>
+<td style="text-align: right;">2.02</td>
+</tr>
+<tr class="even">
+<td>Orin NX</td>
+<td>Batched</td>
+<td style="text-align: right;">131.10</td>
+<td style="text-align: right;">7.62</td>
+<td style="text-align: right;">2.07</td>
+</tr>
+<tr class="odd">
+<td>AGX Xavier</td>
+<td>Single-image</td>
+<td style="text-align: right;">187.39</td>
+<td style="text-align: right;">5.33</td>
+<td style="text-align: right;">1.50</td>
+</tr>
+<tr class="even">
+<td>AGX Xavier</td>
+<td>Batched</td>
+<td style="text-align: right;">83.74</td>
+<td style="text-align: right;">11.89</td>
+<td style="text-align: right;">1.46</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="cpu-comparison" class="level4">
